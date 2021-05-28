@@ -1,0 +1,22 @@
+FROM scratch
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL maintainer="containers@on247.io" \
+    architecture="amd64/x86_64" \
+    alpine-version="3.13.5" \
+    build="14-Apr-2021" \
+    org.opencontainers.image.title="alpine" \
+    org.opencontainers.image.description="Alpine Linux for LAB(X) ON24/7" \
+    org.opencontainers.image.authors="zeroichiio" \
+    org.opencontainers.image.vendor="zeroichi.io" \
+    org.opencontainers.image.version="3.13.5" \
+    org.opencontainers.image.url="https://r.on247.io" \
+    org.opencontainers.image.source="" \
+    org.opencontainers.image.revision=$VCS_REF \
+    org.opencontainers.image.created=$BUILD_DATE
+
+ADD alpine-minirootfs-3.13.5-x86_64.tar.gz /
+CMD ["/bin/sh"]
+

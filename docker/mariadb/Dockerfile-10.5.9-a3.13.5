@@ -1,0 +1,35 @@
+FROM r.on247.io/alpine:3.13.5-x86_64
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL maintainer="containers@on247.io" \
+    architecture="amd64/x86_64" \
+    mariadb-version="10.5.9" \
+    alpine-version="3.13.5" \
+    build="14-Apr-2021" \
+    org.opencontainers.image.title="mariadb-alpine" \
+    org.opencontainers.image.description="MariaDB on Alpine Linux for LAB(X) ON24/7" \
+    org.opencontainers.image.authors="zeroichi" \
+    org.opencontainers.image.vendor="zeroich.io" \
+    org.opencontainers.image.version="10.5.9" \
+    org.opencontainers.image.url="https://r.on247.io" \
+    org.opencontainers.image.source="" \
+    org.opencontainers.image.revision=$VCS_REF \
+    org.opencontainers.image.created=$BUILD_DATE
+
+RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && \
+    rm -f /var/cache/apk/*
+
+ADD run.sh /scripts/run.sh
+RUN mkdir /docker-entrypoint-initdb.d && \
+    mkdir /scripts/pre-exec.d && \
+    mkdir /scripts/pre-init.d && \
+    chmod -R 755 /scripts
+
+EXPOSE 3306
+
+VOLUME ["/var/lib/mysql"]
+
+ENTRYPOINT ["/scripts/run.sh"]
+
