@@ -6,5 +6,5 @@ This registry provides specific versions used in LAB(X) for lab devices, often p
 
 You can use them if you feel the need by using your own registry or dockerhub.
 
-<h2>If you are just after normal docker images you should see the offical documentation and/or pull images from docker hub.</h2>
+<h5>If you are just after normal docker images you should see the offical documentation and/or pull images from docker hub.</h5>
 
