@@ -1,4 +1,4 @@
-This area contains the source to create docker images for LAB(X)
+This area contains the source to create container images for LAB(X)
 
 They are either made from scratch or from each other and pushed and sourced from an on-premises secure registry https://r.on247.io
 
