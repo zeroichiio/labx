@@ -21,7 +21,7 @@ LABEL maintainer="containers@on247.io" \
 RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen && \
     rm -f /var/cache/apk/*
 
-ADD run.sh /scripts/run.sh
+ADD staging.sh /scripts/staging.sh
 RUN mkdir /docker-entrypoint-initdb.d && \
     mkdir /scripts/pre-exec.d && \
     mkdir /scripts/pre-init.d && \
@@ -31,5 +31,5 @@ EXPOSE 3306
 
 VOLUME ["/var/lib/mysql"]
 
-ENTRYPOINT ["/scripts/run.sh"]
+ENTRYPOINT ["/scripts/staging.sh"]
 
